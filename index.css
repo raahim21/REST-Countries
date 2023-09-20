@@ -1,0 +1,72 @@
+.nav-question{
+    margin-left: 3vw;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+}
+nav{
+    background-color: hsl(0, 0%, 98%);
+    width: calc(100vw - 3vw); /* Adjusted width to account for padding */
+    padding: 1.5vw;
+}
+
+#myDropdown{
+    float: right;
+    margin-right: 3vw;
+}
+section{
+    width: 100vw;
+}
+
+.search-input{
+    margin-left: 3vw;
+}
+
+section{
+    padding: 2vw;
+box-sizing: border-box;
+width: calc(100vw - 2vw);
+}
+
+.Country-box{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 90vw;
+    margin: auto;
+}
+
+.Country{
+    margin-bottom: 10px; /* Optional spacing between rows */
+    background-color: #f0f0f0; /* Optional background color */
+    border: 1px solid #ccc; /* Optional border */
+    padding: 10px; /* Optional padding */
+    box-sizing: border-box;
+    text-align: center; /* Optional center alignment */
+    flex: 1;
+    margin: 2vw 0;
+    flex-basis: calc(25% - 10px);
+}
+ /* @media screen and (max-width:1024px){
+    .Country{
+        flex-basis: 33.33%;
+    }
+    .Country-box{
+        flex-direction: column;
+    }
+} */
+
+@media screen and (max-width:700px){
+
+
+    main{
+        margin: auto;
+    }
+
+    .op{
+        margin: auto;
+    }
+}
+
