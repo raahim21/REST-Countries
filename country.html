@@ -89,90 +89,59 @@
         </div>
     </div>
 
-      <script>
-    const dataDisplay = document.getElementById('dataDisplay');
-    const flagImg = document.querySelector('.flag img');
-    // Parse the URL to get the country code
+    
+    
 
-    if (window.location.href.includes('country.html') && window.location.search.includes('?')) {
-        const urlParams = new URLSearchParams(window.location.search);
-        const jsonData = urlParams.get('data');
-        const dataObject = JSON.parse(jsonData);
+    <!-- ... Your HTML code ... -->
 
-        // Display the country flag image
-        flagImg.src = dataObject.flags.png;
+<script>
+  // ... Your existing code ...
+  const flagImg = document.querySelector('.flag img');
+  if (window.location.href.includes('country.html') && window.location.search.includes('?')) {
+    const urlParams = new URLSearchParams(window.location.search);
+    const jsonData = urlParams.get('data');
+    const dataObject = JSON.parse(jsonData);
 
-        // Display the country information in the country-info div
-        dataDisplay.innerHTML = `
-            <div class='parent'>
-                <div class='box1'>
-                    <h1 id='head'>${dataObject.name.common}</h1>
-                    <p>Native Name: ${dataObject.name.common}</p>
-                    <p>Population: ${dataObject.population}</p>
-                    <p>Region: ${dataObject.region}</p>
-                    <p>Subregion: ${dataObject.subregion}</p>
-                    <p>Capital: ${dataObject.capital}</p>
-                </div>
-                <div class='box'>
-                     <p>Top Level Domain: ${dataObject.tld.join(', ')}</p>
-                    <p>Currencies: ${Object.values(dataObject.currencies)[0].name} (${Object.values(dataObject.currencies)[0].symbol})</p>
-                </div>
-                
-            </div>
-            <div id='b' style='display:flex; justify-content:center;'></div>
-        `;
+    // Display the country flag image
+    flagImg.src = dataObject.flags.png;
 
-        // Check if borders data exists before adding it
-        let b = document.querySelector('#b')
-        let s = '';
-        if (dataObject.borders) {
-  dataObject.borders.forEach(element => {
-    s += `<a href='/'>
-      <p>${element}</p>
-    </a>`;
-  });
+    // Display the country information in the country-info div
+    dataDisplay.innerHTML = `
+      <div class='parent'>
+        <div class='box1'>
+          <h1 id='head'>${dataObject.name.common}</h1>
+          <p>Native Name: ${dataObject.name.common}</p>
+          ${dataObject.population ? `<p>Population: ${dataObject.population}</p>` : ''}
+          ${dataObject.region ? `<p>Region: ${dataObject.region}</p>` : ''}
+          ${dataObject.subregion ? `<p>Subregion: ${dataObject.subregion}</p>` : ''}
+          ${dataObject.capital ? `<p>Capital: ${dataObject.capital}</p>` : ''}
+        </div>
+        <div class='box'>
+          ${dataObject.tld && dataObject.tld.length > 0 ? `<p>Top Level Domain: ${dataObject.tld.join(', ')}</p>` : ''}
+          ${dataObject.currencies ? `<p>Currencies: ${Object.values(dataObject.currencies)[0].name || ''} (${Object.values(dataObject.currencies)[0].symbol || ''})</p>` : ''}
+        </div>
+      </div>
+      <div id='b' style='display:flex; justify-content:center;'></div>
+    `;
 
-  // Now, you can append the concatenated anchor elements to the 'b' element
-  b.innerHTML = s;
-}
-    } else {
-        console.log('hi');
+    // Check if borders data exists before adding it
+    let b = document.querySelector('#b')
+    let s = '';
+    if (dataObject.borders && dataObject.borders.length > 0) {
+      dataObject.borders.forEach(element => {
+        s += `<a href=''>
+          <p>${element}</p>
+        </a>`;
+      });
+
+      // Now, you can append the concatenated anchor elements to the 'b' element
+      b.innerHTML = s;
     }
+  } else {
+    document.body.innerHTML = 'Sorry'
+  }
 
-   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  // ... Your existing code ...
 </script>
 
 
