@@ -140,7 +140,17 @@ let searchCount = 0; // Initialize a search count variable
 searchForm.addEventListener('submit', (event) => {
   event.preventDefault();
 
-  const search = document.getElementById('search').value;
+  let mysearchTitle = document.getElementById('search').value;
+  function normalizeInput(input) {
+  return input
+    .trim()
+    .toLowerCase()
+    .split(' ')
+    .filter(word => word) // removes extra spaces between words
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+}
+  let search = normalizeInput(mysearchTitle)
   let countryCards = countriesAll.querySelectorAll('.card'); // Re-query all country cards
 
   let matchFound = false;
